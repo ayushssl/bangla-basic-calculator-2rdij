@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সহজ ক্যালকুলেটর</title>
+    <meta name="theme-color" content="#0f172a">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display-container">
+            <div id="history-display" class="history"></div>
+            <input type="text" id="display" class="display" value="0" readonly>
+        </div>
+        <div class="buttons">
+            <button class="btn clear" data-action="clear">C</button>
+            <button class="btn backspace" data-action="backspace">←</button>
+            <button class="btn operator" data-value="/">÷</button>
+            <button class="btn operator" data-value="*">×</button>
+
+            <button class="btn number">৭</button>
+            <button class="btn number">৮</button>
+            <button class="btn number">৯</button>
+            <button class="btn operator" data-value="-">−</button>
+
+            <button class="btn number">৪</button>
+            <button class="btn number">৫</button>
+            <button class="btn number">৬</button>
+            <button class="btn operator" data-value="+">+</button>
+
+            <button class="btn number">১</button>
+            <button class="btn number">২</button>
+            <button class="btn number">৩</button>
+            <button class="btn equal" data-action="calculate">=</button>
+
+            <button class="btn number zero">০</button>
+            <button class="btn number decimal">.</button>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(reg => console.log('Service worker registered.', reg))
+                    .catch(err => console.error('Service worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>
